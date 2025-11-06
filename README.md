@@ -25,7 +25,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>_```bash```_</u>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;``uvicorn main:app --reload``
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;``uvicorn app.main:app --reload --host 0.0.0.0 --port 8000``
 
 The backend will start on **http://127.0.0.1:8000**
 
