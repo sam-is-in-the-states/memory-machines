@@ -1,25 +1,43 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import AuraVisualization from './components/AuraVisualization/AuraVisualization.jsx';
+import TranscriptDisplay from './components/TranscriptDisplay/TranscriptDisplay.jsx';
+import KeywordsDisplay from './components/KeywordsDisplay/KeywordsDisplay.jsx';
+import Controls from './components/Controls/Controls.jsx';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [isRecording, setIsRecording] = useState(false);
+  const [transcript, setTranscript] = useState([]);
+  const [keywords, setKeywords] = useState([]);
+  const [sentiment, setSentiment] = useState(0.5);
+
+  const handleToggleRecording = () => {
+    if (!isRecording) {
+      setIsRecording(true);
+      // Placeholder: simulate some data
+      setTimeout(() => {
+        setTranscript(prev => [...prev, "This is a sample transcript line..."]);
+        setKeywords(['innovation', 'technology', 'future']);
+        setSentiment(0.7);
+      }, 2000);
+    } else {
+      setIsRecording(false);
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <AuraVisualization sentiment={sentiment} keywords={keywords} />
+
+      <div className="content-wrapper">
+        <div className="display-container">
+          <TranscriptDisplay transcript={transcript} />
+          <KeywordsDisplay keywords={keywords} />
+        </div>
+        <Controls isRecording={isRecording} onToggle={handleToggleRecording} />
+      </div>
     </div>
   );
-}
+};
 
 export default App;

@@ -1,0 +1,19 @@
+.control-btn {
+  padding: 12px 30px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  color: #fff;
+  font-size: 18px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  transition: 0.3s;
+}
+
+.control-btn.start {
+  background: #2ecc71;
+}
+
+.control-btn.stop {
+  background: #e74c3c;
+}

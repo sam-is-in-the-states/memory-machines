@@ -1,0 +1,29 @@
+.keywords-container {
+  background: rgba(0,0,0,0.6);
+  padding: 20px;
+  border-radius: 16px;
+  max-height: 40vh; /* same as transcript */
+  width: 25vw;      /* smaller than transcript */
+  min-width: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: #fff;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  overflow-y: auto;
+}
+
+.keyword-tag {
+  background: rgba(255,255,255,0.2);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  opacity: 0;
+  animation: floatIn 1s forwards;
+}
+
+@keyframes floatIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

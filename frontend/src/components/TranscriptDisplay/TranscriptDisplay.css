@@ -1,0 +1,22 @@
+.transcript-container {
+  background: rgba(0,0,0,0.6);
+  padding: 20px;
+  border-radius: 16px;
+  color: #fff;
+  max-height: 40vh; /* 40% of viewport height */
+  width: 40vw;      /* 40% of viewport width */
+  min-width: 250px; /* don’t shrink too small */
+  overflow-y: auto;
+  font-size: 16px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+.transcript-line {
+  animation: fadeIn 0.5s;
+  margin-bottom: 6px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
