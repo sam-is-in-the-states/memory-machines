@@ -4,8 +4,12 @@
 
 ---
 - Navigate to the backend folder from root directory
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;``cd ../frontend``
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;``cd ../backend``
 - Python 3.10 or later
+
+- Create a virtual environment
+	`python -m venv venv`
+    `venv\Scripts\activate`
 
 - All dependencies are listed in `requirements.txt`.
 

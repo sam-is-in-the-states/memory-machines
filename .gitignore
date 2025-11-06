@@ -213,7 +213,6 @@ __pycache__/
 *.pyo
 *.pyd
 .env
-.env.*
 *.db
 *.sqlite3
 
