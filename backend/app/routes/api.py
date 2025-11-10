@@ -14,7 +14,7 @@ async def root():
 async def health_check():
     return {"status": "healthy"}
 
-@router.post("/process_text", response_model=ProcessedResponse)
+@router.post("/api/process_text", response_model=ProcessedResponse)
 async def process_text(request: TranscriptRequest):
     """
     Process transcript text using Groq API to extract sentiment and keywords.
@@ -26,7 +26,7 @@ async def process_text(request: TranscriptRequest):
         print(f"Error processing text: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error processing text: {str(e)}")
 
-@router.get("/deepgram-key", response_model=DeepgramKeyResponse)
+@router.get("/api/get-deepgram-key", response_model=DeepgramKeyResponse)
 async def get_deepgram_key():
     """
     Return Deepgram API key for frontend to use.
