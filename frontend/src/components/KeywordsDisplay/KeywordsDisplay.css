@@ -2,8 +2,8 @@
   background: rgba(0,0,0,0.6);
   padding: 20px;
   border-radius: 16px;
-  max-height: 40vh; /* same as transcript */
-  width: 25vw;      /* smaller than transcript */
+  max-height: 40vh; 
+  width: 25vw;   
   min-width: 200px;
   display: flex;
   flex-wrap: wrap;

@@ -19,8 +19,6 @@ async def process_text(request: TranscriptRequest):
     """
     Process transcript text using Groq API to extract sentiment and keywords.
     """
-    import time
-    # time.sleep(5)
     try:
         result = groq_service.analyze_text(request.text)
         return ProcessedResponse(**result)
@@ -32,7 +30,7 @@ async def process_text(request: TranscriptRequest):
 async def get_deepgram_key():
     """
     Return Deepgram API key for frontend to use.
-    In production, you might want to implement more secure key management.
+    This is for current assignment and by no means secure.
     """
     settings = get_settings()
     if not settings.deepgram_api_key:

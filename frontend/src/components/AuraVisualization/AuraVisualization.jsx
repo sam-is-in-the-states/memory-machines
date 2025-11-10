@@ -3,6 +3,13 @@ import React, { useEffect, useRef } from 'react';
 export default function AuraVisualization({ sentiment, keywords }) {
   const canvasRef = useRef(null);
   const sketchRef = useRef(null);
+  const sentimentRef = useRef(sentiment);
+
+  // Update sentiment ref when prop changes
+  useEffect(() => {
+    sentimentRef.current = sentiment;
+    console.log("Updated sentiment:", sentimentRef.current);
+  }, [sentiment]);
 
   useEffect(() => {
     // Load p5.js if not already loaded
@@ -20,8 +27,8 @@ export default function AuraVisualization({ sentiment, keywords }) {
         let cols, rows;
         let scale = 20;
         let zoff = 0;
-        let currentSentiment = 0.5;
-        let targetSentiment = 0.5;
+        let currentSentiment = sentiment;
+        let targetSentiment = sentiment;
 
         p.setup = () => {
           p.createCanvas(p.windowWidth, p.windowHeight);
@@ -34,7 +41,7 @@ export default function AuraVisualization({ sentiment, keywords }) {
         };
 
         p.draw = () => {
-          targetSentiment = sentiment || 0.5;
+          targetSentiment = sentimentRef.current;
           currentSentiment = p.lerp(currentSentiment, targetSentiment, 0.05);
 
           const hue = p.map(currentSentiment, 0, 1, 220, 20);
@@ -93,30 +100,25 @@ export default function AuraVisualization({ sentiment, keywords }) {
           }
 
           update(p) {
-            // Very negative (0-0.2): chaotic, aggressive movement
-            if (sentiment < 0.2) {
+            if (sentimentRef.current < 0.2) {
               this.vel.add(p.createVector(p.random(-0.8, 0.8), p.random(-0.8, 0.8)));
               this.maxSpeed = 3.5;
               this.vel.mult(0.92);
             }
-            // Negative (0.2-0.4): tense, jittery
-            else if (sentiment < 0.4) {
+            else if (sentimentRef.current < 0.4) {
               this.vel.add(p.createVector(p.random(-0.4, 0.4), p.random(-0.4, 0.4)));
               this.maxSpeed = 2.8;
               this.vel.mult(0.94);
             }
-            // Slightly negative (0.4-0.6): restless, wandering
-            else if (sentiment < 0.6) {
+            else if (sentimentRef.current < 0.6) {
               this.vel.add(p.createVector(p.random(-0.2, 0.2), p.random(-0.2, 0.2)));
               this.maxSpeed = 2.2;
               this.vel.mult(0.96);
             }
-            // Slightly positive (0.6-0.8): smooth, flowing
-            else if (sentiment < 0.8) {
+            else if (sentimentRef.current < 0.8) {
               this.maxSpeed = 1.8;
               this.vel.mult(0.97);
             }
-            // Very positive (0.8-1.0): graceful, gentle
             else {
               this.maxSpeed = 1.4;
               this.vel.mult(0.98);
@@ -129,9 +131,9 @@ export default function AuraVisualization({ sentiment, keywords }) {
           }
 
           show(p, currentSentiment) {
-            const hue = p.map(currentSentiment, 0, 1, 220, 20);
-            const sat = p.map(currentSentiment, 0, 1, 60, 100);
-            const bright = p.map(currentSentiment, 0, 1, 40, 80);
+            const hue = 220 - (currentSentiment * 200);
+            const sat = 60 + (currentSentiment * 40);
+            const bright = 40 + (currentSentiment * 40);
 
             p.colorMode(p.HSB);
             p.stroke(hue, sat, bright, 150);
@@ -170,7 +172,7 @@ export default function AuraVisualization({ sentiment, keywords }) {
     return () => {
       if (sketchRef.current) sketchRef.current.remove();
     };
-  }, [sentiment]); // update sketch if sentiment changes
+  }, []); 
 
   return <div ref={canvasRef} style={{ position: 'fixed', top: 0, left: 0, zIndex: 0 }} />;
 }

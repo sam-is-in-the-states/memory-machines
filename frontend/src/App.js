@@ -80,7 +80,7 @@ const App = () => {
 
   const startRecording = async () => {
     try {
-      // Request microphone access without specifying sample rate
+      // Request microphone access
       const stream = await navigator.mediaDevices.getUserMedia({ 
         audio: {
           echoCancellation: true,
@@ -185,10 +185,7 @@ const App = () => {
       stopRecording();
     };
   }, []);
-
-
-  if (error) return <div style={{ color: 'red' }}>{error}</div>;
-  if (!apiKey) return <div>Loading key...</div>;
+  
   return (
     <div className="app">
       <AuraVisualization sentiment={sentiment} keywords={keywords} />
