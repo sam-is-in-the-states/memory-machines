@@ -52,6 +52,7 @@ const App = () => {
   // Process text through backend
   const processText = async (text) => {
     try {
+      setKeywords(["Processing emotion..."]);
       const response = await fetch(`${BACKEND_URL}/process_text`, {
         method: 'POST',
         headers: {
@@ -73,6 +74,7 @@ const App = () => {
       console.log('Processed data:', data);
     } catch (err) {
       console.error('Error processing text:', err);
+      setKeywords(["Processing Failed"]);
     }
   };
 
@@ -150,6 +152,7 @@ const App = () => {
       
       socket.onerror = (error) => {
         console.error('Deepgram WebSocket error:', error);
+        setKeywords(["Connection Failed"]);
         setError('Connection error. Please check your API key and internet connection.');
         stopRecording();
       };
@@ -159,6 +162,7 @@ const App = () => {
       };
     } catch (err) {
       console.error('Error starting recording:', err);
+      setKeywords(["Connection Failed"]);
       setError(`Failed to start recording: ${err.message}`);
       setIsRecording(false);
     }

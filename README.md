@@ -1,8 +1,33 @@
+This Website allows users to generate a live transcript while speaking, and then generate key topics from the same speech. The website will also identify the emotion and change the Aura Particles based on the indentified emotion.
+
+# Aura Particle Effects
+
+- ## Particle Color:
+-   **0-0.2 (Very Negative)**: Deep Blue
+-   **0.2-0.4 (Negative)**: Blue-cyan
+-   **0.4-0.6 (Neutral)**: Cyan-Green
+-   **0.6-0.8 (Slightly Positive)**: Yellow-orange
+-   **0.8-1.0 (Very Positive)**: Orange-red
+
+- ## Particle Behavior:
+
+-   **0-0.2 (Very Negative)**: Chaotic, aggressive movement with high speed (3.5) and lots of randomness
+-   **0.2-0.4 (Negative)**: Tense, jittery motion with moderate randomness
+-   **0.4-0.6 (Neutral)**: Restless, wandering with subtle variations
+-   **0.6-0.8 (Slightly Positive)**: Smooth, flowing movement
+-   **0.8-1.0 (Very Positive)**: Graceful, gentle gliding motion
+
+- ## Flow Field Patterns:
+
+-   **0-0.2**: Violent turbulence with fast-oscillating sine waves creating sharp disruptions
+-   **0.2-0.4**: Sharp, angular changes with quantized directions for a jittery feel
+-   **0.4-0.6**: Subtle wavering with gentle sine perturbations
+-   **0.6-0.8**: Gentle spirals emanating from center with soft oscillations
+-   **0.8-1.0**: Expansive, flowing spirals with harmonious wave patterns
 
 
 # Backend
 
----
 - Navigate to the backend folder from root directory
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;``cd ../backend``
 - Python 3.10 or later

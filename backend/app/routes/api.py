@@ -19,6 +19,8 @@ async def process_text(request: TranscriptRequest):
     """
     Process transcript text using Groq API to extract sentiment and keywords.
     """
+    import time
+    # time.sleep(5)
     try:
         result = groq_service.analyze_text(request.text)
         return ProcessedResponse(**result)
