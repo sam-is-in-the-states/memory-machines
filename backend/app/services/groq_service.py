@@ -85,7 +85,7 @@ class GroqService:
         processed_result = {
             "sentiment": float(result.get("sentiment", 0.5)),
             "sentiment_label": result.get("sentiment_label", "neutral"),
-            "keywords": result.get("keywords", ["processing"]),
+            "keywords": [result.get("emotion", "unemotional")] + result.get("keywords", ["processing"]),
             "emotion": result.get("emotion", "neutral")
         }
         

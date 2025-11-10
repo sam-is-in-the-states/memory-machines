@@ -93,6 +93,35 @@ export default function AuraVisualization({ sentiment, keywords }) {
           }
 
           update(p) {
+            // Very negative (0-0.2): chaotic, aggressive movement
+            if (sentiment < 0.2) {
+              this.vel.add(p.createVector(p.random(-0.8, 0.8), p.random(-0.8, 0.8)));
+              this.maxSpeed = 3.5;
+              this.vel.mult(0.92);
+            }
+            // Negative (0.2-0.4): tense, jittery
+            else if (sentiment < 0.4) {
+              this.vel.add(p.createVector(p.random(-0.4, 0.4), p.random(-0.4, 0.4)));
+              this.maxSpeed = 2.8;
+              this.vel.mult(0.94);
+            }
+            // Slightly negative (0.4-0.6): restless, wandering
+            else if (sentiment < 0.6) {
+              this.vel.add(p.createVector(p.random(-0.2, 0.2), p.random(-0.2, 0.2)));
+              this.maxSpeed = 2.2;
+              this.vel.mult(0.96);
+            }
+            // Slightly positive (0.6-0.8): smooth, flowing
+            else if (sentiment < 0.8) {
+              this.maxSpeed = 1.8;
+              this.vel.mult(0.97);
+            }
+            // Very positive (0.8-1.0): graceful, gentle
+            else {
+              this.maxSpeed = 1.4;
+              this.vel.mult(0.98);
+            }
+            
             this.vel.add(this.acc);
             this.vel.limit(this.maxSpeed);
             this.pos.add(this.vel);

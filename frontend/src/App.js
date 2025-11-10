@@ -97,7 +97,7 @@ const App = () => {
       console.log('AudioContext sample rate:', sampleRate);
       
       // Create WebSocket with sample_rate and encoding parameters
-      const wsUrl = `${DEEPGRAM_URL}?encoding=linear16&sample_rate=${sampleRate}`;
+      const wsUrl = `${DEEPGRAM_URL}?encoding=linear16&sample_rate=${sampleRate}&model=nova-2`;
       const socket = new WebSocket(wsUrl, ['token', apiKey]);
       
       deepgramSocketRef.current = socket;
@@ -192,7 +192,7 @@ const App = () => {
       <div className="content-wrapper">
         <div className="display-container">
           <TranscriptDisplay transcript={transcript} />
-          <KeywordsDisplay keywords={keywords} />
+          <KeywordsDisplay sentiment={sentiment} keywords={keywords} />
         </div>
         <Controls isRecording={isRecording} onToggle={handleToggleRecording} />
       </div>
