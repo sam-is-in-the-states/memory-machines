@@ -26,7 +26,14 @@ This Website allows users to generate a live transcript while speaking, and then
 -   **0.8-1.0**: Expansive, flowing spirals with harmonious wave patterns
 
 
-# Backend
+# DEMO
+
+[![Watch the demo](https://img.youtube.com/vi/8TVUtxs7sG8/0.jpg)](https://youtu.be/8TVUtxs7sG8)
+
+
+# SETUP
+
+## Backend
 
 - Navigate to the backend folder from root directory
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;``cd ../backend``
@@ -56,7 +63,7 @@ The backend will start on **http://127.0.0.1:8000**
 
 ---
 
-# Frontend
+## Frontend
 
 - Install node.js: https://nodejs.org/en/
 
